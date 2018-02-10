@@ -1,0 +1,14 @@
+.chat-line {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.sender {
+  font-weight: 600;
+}
+
+.message {
+  word-break: break-word;
+}

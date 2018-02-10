@@ -1,0 +1,26 @@
+{
+  "name": "react-twitchy-chat",
+  "version": "0.1.0",
+  "description": "React library for twitch style chat windows that sticky and overlay content",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "Adam Tyler <adam.tyler@utexas.edu> (http://adam-tyler.com)",
+  "keywords": [
+    "react",
+    "chat",
+    "twitch",
+    "windows",
+    "overlay"
+  ],
+  "license": "MIT"
+}
