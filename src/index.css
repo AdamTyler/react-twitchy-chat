@@ -3,11 +3,6 @@ html, body {
   height: 100%;
   width: 100%;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body, div {
   margin: 0;
@@ -16,6 +11,12 @@ body, div {
   font-size: 100%;
   vertical-align: baseline;
   font-family: sans-serif;
+}
+
+.tc * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .tc-flex {
