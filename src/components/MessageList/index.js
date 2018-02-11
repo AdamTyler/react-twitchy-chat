@@ -6,7 +6,11 @@ import './styles.css'
 
 export default class MessageList extends Component {
   render () {
-    const { className, messages } = this.props
+    const { className, maxMessages } = this.props
+    let { messages } = this.props
+    if (messages.length > maxMessages) {
+      messages = messages.slice(messages.length - maxMessages, messages.length)
+    }
     return (
       <div className={classNames('tc-msg-list__container', className)}>
         <div
