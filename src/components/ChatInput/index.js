@@ -46,6 +46,7 @@ export default class ChatInput extends Component {
     }
     if (e.which === 13) {
       onSubmit(this.state.value)
+      this.setState({value: ''})
     }
   }
 }

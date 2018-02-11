@@ -31,12 +31,8 @@
   flex-shrink: 0;
 }
 
-.tc-chat-content {
+.tc-chat-messages {
   height: 20rem;
-}
-
-.tc-chat-content__conatiner {
-  height: 100%;
 }
 
 .tc-chat-input {

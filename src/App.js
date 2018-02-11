@@ -4,6 +4,17 @@ import logo from './at.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      messages: [
+        { text: 'hi', sender: 'lazy9669', time: '123'},
+        { text: 'hello', sender: 'dude1', time: '123345'}
+      ]
+    }
+  }
   render () {
     return (
       <div className="App tc">
@@ -12,7 +23,12 @@ class App extends Component {
           <h1 className="App-title">react-twitchy-chat</h1>
         </header>
         <div className='App-container'>
-          <ChatWindow id={'chat1'} title={'TestChat'} onSubmit={this.sendChat} />
+          <ChatWindow
+            id={'chat1'}
+            messages={this.state.messages}
+            onSubmit={this.sendChat}
+            title={'TestChat'}
+          />
         </div>
       </div>
     );
@@ -20,6 +36,8 @@ class App extends Component {
 
   sendChat = (id, msg, opts={}) => {
     console.log('sendChat', id, msg, opts)
+    let newMsg = {text: msg, sender: 'blah', time: '234'}
+    this.setState({messages: [...this.state.messages, newMsg]})
   }
 }
 

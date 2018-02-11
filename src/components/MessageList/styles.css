@@ -1,0 +1,11 @@
+.tc-msg-list__container {
+  height: 100%;
+}
+
+.msg-list {
+  height: 100%;
+  background-color: #eee;
+  overflow: hidden;
+  overflow-y: auto;
+  position: relative;
+}

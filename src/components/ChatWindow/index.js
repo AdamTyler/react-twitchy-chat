@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
-import MsgList from '../MsgList'
+import MessageList from '../MessageList'
 import ChatInput from '../ChatInput'
 
 import './styles.css'
 
-const msgs = [
-  { id: 1, text: 'hi', sender: 'lazy9669', time: '123'},
-  { id: 2, text: 'hello', sender: 'dude1', time: '123345'}
-]
-
 export default class ChatWindow extends Component {
   render() {
-    const { id, onSubmit, title } = this.props
+    const { id, messages, onSubmit, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
@@ -29,10 +24,11 @@ export default class ChatWindow extends Component {
             </div>
           </div>
         </div>
-        <div className='tc-chat-content tc-full-width'>
-          <div className='tc-chat-content__conatiner'>
-            <MsgList messages={msgs} fuck={'jfjfj'}/>
-          </div>
+        <div className='tc-chat-messages tc-full-width'>
+          <MessageList
+            maxMessages={10}
+            messages={messages}
+          />
         </div>
         <div className='tc-chat-input tc-full-width'>
           <ChatInput onSubmit={msg => onSubmit(id, msg)} />
