@@ -45,6 +45,9 @@ export default class ChatInput extends Component {
       onKeyDown(e)
     }
     if (e.which === 13) {
+      if (this.state.value === '') {
+        return
+      }
       onSubmit(this.state.value)
       this.setState({value: ''})
     }

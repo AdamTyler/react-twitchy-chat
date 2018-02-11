@@ -9,3 +9,17 @@
   overflow-y: auto;
   position: relative;
 }
+
+.msg-list::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+}
+
+.msg-list::-webkit-scrollbar-track {
+  width: 12px;
+}
+
+.msg-list::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #9bafb9;
+}
