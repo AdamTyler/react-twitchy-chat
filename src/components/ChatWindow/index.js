@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MsgList from '../MsgList'
+import ChatInput from '../ChatInput'
 
 import './styles.css'
 
@@ -10,7 +11,7 @@ const msgs = [
 
 export default class ChatWindow extends Component {
   render() {
-    const { title } = this.props
+    const { id, onSubmit, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
@@ -20,10 +21,10 @@ export default class ChatWindow extends Component {
             </div>
             <div className='tc-flex tc-title-btns'>
               <button className='tc-title-btns-settings tc-btn-icon'>
-                <i class="material-icons">settings</i>
+                <i className="material-icons">settings</i>
               </button>
               <button className='tc-title-btns-close tc-btn-icon'>
-                <i class="material-icons">close</i>
+                <i className="material-icons">close</i>
               </button>
             </div>
           </div>
@@ -34,9 +35,7 @@ export default class ChatWindow extends Component {
           </div>
         </div>
         <div className='tc-chat-input tc-full-width'>
-          <div className='tc-chat-input__container'>
-            <input className='tc-input' autoCapitalize='off' autoCorrect='off' />
-          </div>
+          <ChatInput onSubmit={msg => onSubmit(id, msg)} />
         </div>
       </div>
     )

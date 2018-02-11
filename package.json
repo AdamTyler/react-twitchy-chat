@@ -4,6 +4,7 @@
   "description": "React library for twitch style chat windows that sticky and overlay content",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
