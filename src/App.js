@@ -11,10 +11,11 @@ class App extends Component {
     this.state = {
       messages: [
         { text: 'hi', sender: 'lazy9669', time: '123'},
-        { text: 'hello', sender: 'dude1', time: '123345'}
+        { text: 'hello', sender: 'thedude', time: '123345'}
       ]
     }
   }
+
   render () {
     return (
       <div className="App tc">
@@ -29,14 +30,20 @@ class App extends Component {
             onSubmit={this.sendChat}
             title={'TestChat'}
           />
+          <ChatWindow
+            id={'chatTwo'}
+            messages={this.state.messages}
+            onSubmit={this.sendChat}
+            title={'Other Chat'}
+          />
         </div>
       </div>
     );
   }
 
   sendChat = (id, msg, opts={}) => {
-    console.log('sendChat', id, msg, opts)
-    let newMsg = {text: msg, sender: 'blah', time: '234'}
+    // console.log('sendChat', id, msg, opts)
+    let newMsg = {text: msg, sender: 'lazy9669', time: '234'}
     this.setState({messages: [...this.state.messages, newMsg]})
   }
 }

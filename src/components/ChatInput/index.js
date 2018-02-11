@@ -11,6 +11,7 @@ export default class ChatInput extends Component {
       value: this.props.defaultValue
     }
   }
+
   render () {
     const { className, disabled, maxLength, placeholder } = this.props
     return (
