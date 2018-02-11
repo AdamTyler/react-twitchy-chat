@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MessageList from '../MessageList'
+import ChatHeader from '../ChatHeader'
 import ChatInput from '../ChatInput'
 
 import './styles.css'
@@ -10,19 +11,7 @@ export default class ChatWindow extends Component {
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
-          <div className='tc-title-header tc-flex tc-full-width tc-align-center'>
-            <div className='tc-flex tc-title-text'>
-              <span>{title}</span>
-            </div>
-            <div className='tc-flex tc-title-btns'>
-              <button className='tc-title-btns-settings tc-btn-icon'>
-                <i className="material-icons">settings</i>
-              </button>
-              <button className='tc-title-btns-close tc-btn-icon'>
-                <i className="material-icons">close</i>
-              </button>
-            </div>
-          </div>
+          <ChatHeader title={title} />
         </div>
         <div className='tc-chat-messages tc-full-width'>
           <MessageList
