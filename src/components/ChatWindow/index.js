@@ -17,7 +17,7 @@ export default class ChatWindow extends Component {
         </div>
         <div className='tc-chat-messages tc-full-width'>
           <MessageList
-            maxMessages={10}
+            maxMessages={100}
             messages={messages}
           />
         </div>
