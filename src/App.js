@@ -27,18 +27,24 @@ class App extends Component {
           <ChatWindow
             id={'chat1'}
             messages={this.state.messages}
+            onClose={this.onClose}
             onSubmit={this.sendChat}
             title={'TestChat'}
           />
           <ChatWindow
             id={'chatTwo'}
             messages={this.state.messages}
+            onClose={this.onClose}
             onSubmit={this.sendChat}
             title={'Other Chat'}
           />
         </div>
       </div>
     );
+  }
+
+  onClose = id => {
+    console.log('close', id)
   }
 
   sendChat = (id, msg, opts={}) => {

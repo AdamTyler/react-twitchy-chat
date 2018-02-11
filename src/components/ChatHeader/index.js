@@ -15,12 +15,18 @@ export default class ChatHeader extends Component {
           <button className='tc-title-btns-settings tc-btn-icon'>
             <i className="material-icons">settings</i>
           </button>
-          <button className='tc-title-btns-close tc-btn-icon'>
+          <button className='tc-title-btns-close tc-btn-icon' onClick={() => this.onClose()}>
             <i className="material-icons">close</i>
           </button>
         </div>
       </div>
     )
+  }
+
+  onClose = () => {
+    if (this.props.onClose instanceof Function) {
+      this.props.onClose()
+    }
   }
 }
 

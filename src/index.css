@@ -32,38 +32,3 @@ body, div {
 .tc-full-width {
   width: 100%;
 }
-
-/* buttons */
-.tc-btn-icon {
-  border: 1px solid transparent;
-  background: transparent;
-  color: #2c9fd7;
-  cursor: pointer;
-  display: inline-flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  font-size: 1.2rem;
-  line-height: 2rem;
-  text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-.tc-btn-icon:hover {
-  border-color: transparent;
-  background: rgba(100,65,164,.05);
-  color: #253641;
-}
-.tc-btn-icon:active {
-  border-color: rgba(65, 138, 164, 0.6);
-  background: transparent;
-  color: #2c2541;
-}
-.tc-btn-icon:focus {
-  box-shadow: 0 0 6px 0 #5b9dbe;
-}
-.material-icons {
-  font-size: 1.6rem;
-  padding: .6rem;
-}

@@ -13,25 +13,6 @@
   top: 0;
 }
 
-.tc-title-header {
-  background-color: #efeef1;
-  box-shadow: inset 0 0 0 1px #dad8de, 0 2px 0 rgba(0,0,0,.05);
-  cursor: pointer;
-  position: relative;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-}
-
-.tc-title-text {
-  flex-grow: 1;
-}
-
-.tc-title-btns {
-  flex-shrink: 0;
-}
-
 .tc-chat-messages {
   height: 20rem;
 }

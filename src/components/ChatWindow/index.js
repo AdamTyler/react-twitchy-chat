@@ -7,11 +7,13 @@ import './styles.css'
 
 export default class ChatWindow extends Component {
   render() {
-    const { id, messages, onSubmit, title } = this.props
+    const { id, messages, onClose, onSubmit, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
-          <ChatHeader title={title} />
+          <ChatHeader
+            onClose={() => onClose(id)}
+            title={title} />
         </div>
         <div className='tc-chat-messages tc-full-width'>
           <MessageList
@@ -25,4 +27,12 @@ export default class ChatWindow extends Component {
       </div>
     )
   }
+}
+
+ChatWindow.defaultProps = {
+  id: 1,
+  messages: [],
+  onClose: null,
+  onSubmit: null,
+  title: 'Twitchy Chat',
 }
