@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { MdSettings, MdClose } from 'react-icons/lib/md'
 import './styles.css'
 
 export default class ChatHeader extends Component {
@@ -13,10 +13,10 @@ export default class ChatHeader extends Component {
         </div>
         <div className='tc-flex tc-title-btns'>
           <button className='tc-title-btns-settings tc-btn-icon'>
-            <i className="material-icons">settings</i>
+            <MdSettings size={'1.6rem'} />
           </button>
           <button className='tc-title-btns-close tc-btn-icon' onClick={() => this.onClose()}>
-            <i className="material-icons">close</i>
+            <MdClose size={'1.6rem'} />
           </button>
         </div>
       </div>
