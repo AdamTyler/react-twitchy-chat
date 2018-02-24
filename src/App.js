@@ -32,6 +32,7 @@ class App extends Component {
               onClose={this.onClose}
               onSubmit={this.sendChat}
               showSettings={false}
+              onTitleClick={this.onTitleClick}
               title={'TestChat'}
             />
             <ChatWindow
@@ -40,6 +41,7 @@ class App extends Component {
               onClose={this.onClose}
               onSettings={this.onSettings}
               onSubmit={this.sendChat}
+              onTitleClick={this.onTitleClick}
               title={'Other Chat'}
             />
           </div>
@@ -49,12 +51,16 @@ class App extends Component {
     );
   }
 
-  onClose = id => {
-    console.log('close', id)
+  onClose = (id, e) => {
+    console.log('close', id, e)
   }
 
-  onSettings = id => {
-    console.log('settings', id)
+  onSettings = (id, e) => {
+    console.log('settings', id, e)
+  }
+
+  onTitleClick = (id, e) => {
+    console.log('title', id, e)
   }
 
   sendChat = (id, msg, opts={}) => {

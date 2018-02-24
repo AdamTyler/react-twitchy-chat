@@ -1,32 +1,34 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import './styles.css'
 
 export default class ChatInput extends Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      value: this.props.defaultValue
-    }
+  state = {
+    value: this.props.defaultValue
   }
 
-  render () {
-    const { className, disabled, maxLength, placeholder } = this.props
-    return (
-      <div className={classNames('tc-input__container', className)}>
-        <input className='tc-input'
-          autoCapitalize='off'
-          autoCorrect='off'
-          disabled={disabled}
-          maxLength={maxLength}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          placeholder={placeholder}
-          value={this.state.value} />
-      </div>
-    )
+  static propTypes = {
+    className: PropTypes.string,
+    defaultValue: PropTypes.string,
+    disabled: PropTypes.bool,
+    maxLength: PropTypes.func,
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onSubmit: PropTypes.func,
+    placeholder: PropTypes.string
+  }
+
+  static defaultProps = {
+    className: '',
+    defaultValue: '',
+    disabled: false,
+    maxLength: null,
+    onChange: null,
+    onKeyDown: null,
+    onSubmit: null,
+    placeholder: 'Type a Message...'
   }
 
   onChange = e => {
@@ -53,15 +55,21 @@ export default class ChatInput extends Component {
       this.setState({value: ''})
     }
   }
-}
 
-ChatInput.defaultProps = {
-  className: '',
-  defaultValue: '',
-  disabled: false,
-  maxLength: null,
-  onChange: null,
-  onKeyDown: null,
-  onSubmit: null,
-  placeholder: 'Type a Message...'
+  render () {
+    const { className, disabled, maxLength, placeholder } = this.props
+    return (
+      <div className={classNames('tc-input__container', className)}>
+        <input className='tc-input'
+          autoCapitalize='off'
+          autoCorrect='off'
+          disabled={disabled}
+          maxLength={maxLength}
+          onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
+          placeholder={placeholder}
+          value={this.state.value} />
+      </div>
+    )
+  }
 }

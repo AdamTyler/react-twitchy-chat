@@ -1,34 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ChatLine from '../ChatLine'
 import classNames from 'classnames'
 
 import './styles.css'
 
 export default class MessageList extends Component {
-  render () {
-    const { className, maxMessages } = this.props
-    let { messages } = this.props
-    if (messages.length > maxMessages) {
-      messages = messages.slice(messages.length - maxMessages, messages.length)
-    }
-    return (
-      <div className={classNames('tc-msg-list__container', className)}>
-        <div
-          className='msg-list'
-          onScroll={this.onScroll}
-          ref={div => this.msgs = div}
-        >
-          {messages.map((msg, i) => <ChatLine key={i} {...msg} />)}
-        </div>
-      </div>
-    )
+
+  static proptypes = {
+    className: PropTypes.string,
+    onScroll: PropTypes.func,
+    maxMessages: PropTypes.number,
+    messages: PropTypes.array,
   }
 
-  componentWillReceiveProps () {
-    if (!this.msgs) {
-      return
-    }
-    this.setState({ scrollBottom: this.getBottom(this.msgs)}, this.scrollToBottom)
+  static defaultProps = {
+    className: '',
+    onScroll: null,
+    maxMessages: 200,
+    messages: [],
   }
 
   getBottom = e => {
@@ -50,13 +40,31 @@ export default class MessageList extends Component {
     if (this.state.scrollBottom === 0) {
       this.msgs.scrollTop = this.msgs.scrollHeight
     }
-}
+  }
 
-}
+  componentWillReceiveProps () {
+    if (!this.msgs) {
+      return
+    }
+    this.setState({ scrollBottom: this.getBottom(this.msgs)}, this.scrollToBottom)
+  }
 
-MessageList.defaultProps = {
-  className: '',
-  onScroll: null,
-  maxMessages: 200,
-  messages: [],
+  render () {
+    const { className, maxMessages } = this.props
+    let { messages } = this.props
+    if (messages.length > maxMessages) {
+      messages = messages.slice(messages.length - maxMessages, messages.length)
+    }
+    return (
+      <div className={classNames('tc-msg-list__container', className)}>
+        <div
+          className='msg-list'
+          onScroll={this.onScroll}
+          ref={div => this.msgs = div}
+        >
+          {messages.map((msg, i) => <ChatLine key={i} {...msg} />)}
+        </div>
+      </div>
+    )
+  }
 }
