@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChatWindow from './components/ChatWindow'
+import ChatsBox from './components/ChatsBox'
 import logo from './at.svg';
 import './App.css';
 
@@ -24,20 +25,23 @@ class App extends Component {
           <h1 className="App-title">react-twitchy-chat</h1>
         </header>
         <div className='App-container'>
-          <ChatWindow
-            id={'chat1'}
-            messages={this.state.messages}
-            onClose={this.onClose}
-            onSubmit={this.sendChat}
-            title={'TestChat'}
-          />
-          <ChatWindow
-            id={'chatTwo'}
-            messages={this.state.messages}
-            onClose={this.onClose}
-            onSubmit={this.sendChat}
-            title={'Other Chat'}
-          />
+          <div className='App-windows'>
+            <ChatWindow
+              id={'chat1'}
+              messages={this.state.messages}
+              onClose={this.onClose}
+              onSubmit={this.sendChat}
+              title={'TestChat'}
+            />
+            <ChatWindow
+              id={'chatTwo'}
+              messages={this.state.messages}
+              onClose={this.onClose}
+              onSubmit={this.sendChat}
+              title={'Other Chat'}
+            />
+          </div>
+          <ChatsBox />
         </div>
       </div>
     );

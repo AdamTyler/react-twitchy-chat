@@ -1,0 +1,42 @@
+.chats-dialogs-box__container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.1),0 1px 8px -3px rgba(0,0,0,.02),0 2px 16px 0 rgba(0,0,0,.04);
+  border-bottom: 3px solid #2c9fd7;
+}
+
+.chats-dialogs-box__open-close {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.chats-btn {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.chats-btn-icon {
+  display: inline-flex;
+  padding: .6rem;
+}
+
+i {
+  display: inline-flex;
+  align-items: center;
+}

@@ -25,6 +25,14 @@
 }
 
 .App-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-right: 1rem;
+}
+
+.App-windows {
   display: flex;
   flex-direction: row-reverse;
   position: absolute;
