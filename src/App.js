@@ -31,12 +31,14 @@ class App extends Component {
               messages={this.state.messages}
               onClose={this.onClose}
               onSubmit={this.sendChat}
+              showSettings={false}
               title={'TestChat'}
             />
             <ChatWindow
               id={'chatTwo'}
               messages={this.state.messages}
               onClose={this.onClose}
+              onSettings={this.onSettings}
               onSubmit={this.sendChat}
               title={'Other Chat'}
             />
@@ -49,6 +51,10 @@ class App extends Component {
 
   onClose = id => {
     console.log('close', id)
+  }
+
+  onSettings = id => {
+    console.log('settings', id)
   }
 
   sendChat = (id, msg, opts={}) => {
