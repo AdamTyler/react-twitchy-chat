@@ -9,8 +9,8 @@ class App extends Component {
 
   state = {
     chats: [
-      {avatar: 'http://via.placeholder.com/70x70', title: 'This one Chat', subtitle: 'something here'},
-      {avatar: 'http://via.placeholder.com/70x70', title: 'This other Chat', subtitle: 'something here'}
+      {avatar: 'http://via.placeholder.com/70x70', title: 'This one Chat', subtitle: 'something here', lastUpdate: Date.now()},
+      {avatar: 'http://via.placeholder.com/70x70', title: 'This other Chat', subtitle: 'something here', lastUpdate: Date.now() - 300000}
     ],
     messages: [
       { text: 'hi', sender: 'lazy9669', time: '123'},

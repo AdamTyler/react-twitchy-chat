@@ -19,3 +19,9 @@
 .tc-image {
   width: 100%;
 }
+.tc-chatlist--title > span {
+  font-weight: 600;
+}
+.tc-chatlist--title__time {
+  float: right;
+}
