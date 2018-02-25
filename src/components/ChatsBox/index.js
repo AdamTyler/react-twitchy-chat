@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { MdInsertComment } from 'react-icons/lib/md'
 
 import './styles.css'
@@ -7,10 +8,12 @@ import './styles.css'
 export default class ChatsBox extends Component {
 
   static propTypes = {
+    className: PropTypes.string,
     icon: PropTypes.object
   }
 
   static defaultProps = {
+    className: '',
     icon: <MdInsertComment size={'1.6rem'} />
   }
 
@@ -21,12 +24,12 @@ export default class ChatsBox extends Component {
   }
 
   render () {
-    const { icon } = this.props
+    const { className, icon } = this.props
     return (
-      <div className='chats-dialogs-box__container' onClick={this.onClick}>
-        <div className='chats-dialogs-box__open-close'>
-          <div className='chats-btn'>
-            <span className='chats-btn-icon'>
+      <div className={classNames('tc-dialogs-box__container', className)} onClick={this.onClick}>
+        <div className='tc-dialogs-box__open-close'>
+          <div className='tc-btn'>
+            <span className='tc-btn-icon'>
               {icon}
             </span>
           </div>
