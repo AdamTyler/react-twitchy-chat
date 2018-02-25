@@ -20,9 +20,9 @@ export default class ChatList extends Component {
     onClick: null
   }
 
-  onClick = e => {
+  onClick = (chat, e) => {
     if (this.props.onClick instanceof Function) {
-      this.props.onClick(e)
+      this.props.onClick(chat, e)
     }
   }
 
@@ -44,7 +44,7 @@ export default class ChatList extends Component {
             <ChatListItem
               key={i}
               {...chat}
-              onClick={this.onClick}
+              onClick={(e) => this.onClick(chat, e)}
               onClose={this.onClose}
             />)
           )}

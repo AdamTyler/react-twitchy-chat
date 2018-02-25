@@ -9,13 +9,17 @@ class App extends Component {
 
   state = {
     chats: [
-      {avatar: 'http://via.placeholder.com/70x70', title: 'This one Chat', subtitle: 'something here', lastUpdate: Date.now()},
-      {avatar: 'http://via.placeholder.com/70x70', title: 'This other Chat', subtitle: 'something here', lastUpdate: Date.now() - 300000}
+      {id: 1, avatar: 'http://via.placeholder.com/70x70', title: 'This one Chat', subtitle: 'something here', lastUpdate: Date.now()},
+      {id: 2, avatar: 'http://via.placeholder.com/70x70', title: 'This other Chat', subtitle: 'something here', lastUpdate: Date.now() - 300000}
     ],
     messages: [
       { text: 'hi', sender: 'lazy9669', time: '123'},
       { text: 'hello', sender: 'thedude', time: '123345'}
     ]
+  }
+
+  onChatListClick = (chat, e) => {
+    console.log('chatListClick', chat, e)
   }
 
   onClose = (id, e) => {
@@ -68,7 +72,7 @@ class App extends Component {
               title={'Other Chat'}
             />
           </div>
-          <ChatList chats={this.state.chats} />
+          <ChatList chats={this.state.chats} onClick={this.onChatListClick} />
           <ChatsBox onClick={this.openChatList} />
         </div>
       </div>
