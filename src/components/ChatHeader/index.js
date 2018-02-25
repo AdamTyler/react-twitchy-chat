@@ -1,26 +1,29 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
 import { MdSettings, MdClose } from 'react-icons/lib/md'
 import './styles.css'
 
 export default class ChatHeader extends Component {
 
   static propTypes = {
+    className: PropTypes.string,
     showClose: PropTypes.bool,
     showSettings: PropTypes.bool,
     title: PropTypes.string
   }
 
   static defaultProps = {
+    className: '',
     showClose: true,
     showSettings: true,
     title: 'Twitchy Chat'
   }
 
   render () {
-    const { onClose, onSettings, onTitleClick, showClose, showSettings, title } = this.props
+    const { className, onClose, onSettings, onTitleClick, showClose, showSettings, title } = this.props
     return (
-      <div className='tc-title-header tc-flex tc-full-width tc-align-center'>
+      <div className={classNames('tc-title-header tc-flex tc-full-width tc-align-center', className)}>
         <div className='tc-flex tc-title-text' onClick={onTitleClick}>
           <span>{title}</span>
         </div>

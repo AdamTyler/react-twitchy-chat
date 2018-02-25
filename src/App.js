@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import ChatWindow from './components/ChatWindow'
 import ChatsBox from './components/ChatsBox'
+import ChatList from './components/ChatList'
+import ChatWindow from './components/ChatWindow'
 import logo from './at.svg'
 import './App.css'
 
 class App extends Component {
 
   state = {
+    chats: [
+      {avatar: 'http://via.placeholder.com/70x70', title: 'This one Chat', subtitle: 'something here'},
+      {avatar: 'http://via.placeholder.com/70x70', title: 'This other Chat', subtitle: 'something here'}
+    ],
     messages: [
       { text: 'hi', sender: 'lazy9669', time: '123'},
       { text: 'hello', sender: 'thedude', time: '123345'}
@@ -63,6 +68,7 @@ class App extends Component {
               title={'Other Chat'}
             />
           </div>
+          <ChatList chats={this.state.chats} />
           <ChatsBox onClick={this.openChatList} />
         </div>
       </div>
