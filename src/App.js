@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
 import ChatWindow from './components/ChatWindow'
 import ChatsBox from './components/ChatsBox'
-import logo from './at.svg';
-import './App.css';
+import logo from './at.svg'
+import './App.css'
 
 class App extends Component {
 
-  constructor (props) {
-    super(props)
+  state = {
+    messages: [
+      { text: 'hi', sender: 'lazy9669', time: '123'},
+      { text: 'hello', sender: 'thedude', time: '123345'}
+    ]
+  }
 
-    this.state = {
-      messages: [
-        { text: 'hi', sender: 'lazy9669', time: '123'},
-        { text: 'hello', sender: 'thedude', time: '123345'}
-      ]
-    }
+  onClose = (id, e) => {
+    console.log('close', id, e)
+  }
+
+  onSettings = (id, e) => {
+    console.log('settings', id, e)
+  }
+
+  onTitleClick = (id, e) => {
+    console.log('title', id, e)
+  }
+
+  openChatList = e => {
+    console.log('open chat list', e)
+  }
+
+  sendChat = (id, msg, opts={}) => {
+    // console.log('sendChat', id, msg, opts)
+    let newMsg = {text: msg, sender: 'lazy9669', time: '234'}
+    this.setState({messages: [...this.state.messages, newMsg]})
   }
 
   render () {
@@ -45,29 +63,11 @@ class App extends Component {
               title={'Other Chat'}
             />
           </div>
-          <ChatsBox />
+          <ChatsBox onClick={this.openChatList} />
         </div>
       </div>
     );
   }
-
-  onClose = (id, e) => {
-    console.log('close', id, e)
-  }
-
-  onSettings = (id, e) => {
-    console.log('settings', id, e)
-  }
-
-  onTitleClick = (id, e) => {
-    console.log('title', id, e)
-  }
-
-  sendChat = (id, msg, opts={}) => {
-    // console.log('sendChat', id, msg, opts)
-    let newMsg = {text: msg, sender: 'lazy9669', time: '234'}
-    this.setState({messages: [...this.state.messages, newMsg]})
-  }
 }
 
-export default App;
+export default App
