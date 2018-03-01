@@ -4,6 +4,10 @@
   border-bottom: 1px solid #d2d2d2;
 }
 
+.tc-chatlist-item__container:hover {
+  background-color: #efeef1;
+}
+
 .tc-chatlist-item__avatar {
   margin-right: .5rem;
 }
@@ -19,9 +23,26 @@
 .tc-image {
   width: 100%;
 }
+
 .tc-chatlist--title > span {
   font-weight: 600;
 }
+
 .tc-chatlist--title__time {
-  float: right;
+  font-size: 0.9rem;
+}
+
+.tc-chatlist--unreads {
+  background-color: #2c9fd7;
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  bottom: .12em;
+  padding: .24rem .4rem;
+  border-radius: 5px;
+  font-size: 75%;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
 }

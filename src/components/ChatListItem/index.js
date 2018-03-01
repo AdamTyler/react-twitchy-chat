@@ -14,7 +14,8 @@ export default class ChatListItem extends Component {
     onClick: PropTypes.func,
     onClose: PropTypes.func,
     subtitle: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    unread: PropTypes.number
   }
 
   static defaultProps = {
@@ -24,11 +25,12 @@ export default class ChatListItem extends Component {
     onClick: null,
     onClose: null,
     subtitle: 'chat subtitle...',
-    title: 'Chat Title'
+    title: 'Chat Title',
+    unread: 0
   }
 
   render () {
-    const { avatar, className, lastUpdate, onClick, onClose, subtitle, title } = this.props
+    const { avatar, className, lastUpdate, onClick, onClose, subtitle, title, unread } = this.props
     return (
       <div className={classNames('tc-chatlist-item__container tc-flex tc-full-width tc-align-center', className)}
         onClick={onClick}
@@ -42,13 +44,17 @@ export default class ChatListItem extends Component {
         <div className='tc-chatlist-item__content tc-full-width'>
           <div className='tc-chatlist--title'>
             <span>{title}</span>
-            <div className="tc-chatlist--title__time">
-              { lastUpdate && !isNaN(lastUpdate) && moment(lastUpdate).fromNow() }
+          </div>
+          <div className="tc-chatlist--title__time">
+            {lastUpdate && !isNaN(lastUpdate) && moment(lastUpdate).fromNow()}
+          </div>
+        </div>
+        <div className='tc-chatlist-item__extra'>
+          {unread !== 0 &&
+            <div className='tc-chatlist--unreads'>
+              {unread}
             </div>
-          </div>
-          <div className='tc-chatlist--subtitle'>
-            {subtitle}
-          </div>
+          }
         </div>
       </div>
     )

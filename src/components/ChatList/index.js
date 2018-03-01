@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import ChatHeader from '../ChatHeader'
+import ChatListHeader from '../ChatListHeader'
 import ChatListItem from '../ChatListItem'
 
 import './styles.css'
@@ -11,13 +11,28 @@ export default class ChatList extends Component {
   static propTypes = {
     chats: PropTypes.array,
     className: PropTypes.string,
+    onClose: PropTypes.func,
+    onMinimize: PropTypes.func,
+    onSettings: PropTypes.func,
+    onTitleClick: PropTypes.func,
+    showClose: PropTypes.bool,
+    showMinimize: PropTypes.bool,
+    showSettings: PropTypes.bool,
+    title: PropTypes.string,
     onClick: PropTypes.func,
   }
 
   static defaultProps = {
     chats: [],
     className: '',
-    onClick: null
+    onClick: null,
+    onClose: null,
+    onMinimize: null,
+    onSettings: null,
+    onTitleClick: null,
+    showClose: false,
+    showMinimize: true,
+    showSettings: true,
   }
 
   onClick = (chat, e) => {
@@ -26,18 +41,23 @@ export default class ChatList extends Component {
     }
   }
 
-  onClose = (id, e) => {
-    if (this.props.onClose instanceof Function) {
-      this.props.onClose(id, e)
+  onCloseChatListItem = (id, e) => {
+    if (this.props.onCloseChatListItem instanceof Function) {
+      this.props.onCloseChatListItem(id, e)
     }
   }
 
   render () {
-    const { chats, className } = this.props
+    const { chats, className, onClose, onMinimize, onSettings } = this.props
     return (
       <div className={classNames('tc-chatlist tc-flex tc-align-center', className)}>
         <div className='tc-chatlist-title tc-flex tc-full-width tc-align-center'>
-          <ChatHeader title={'Your Chats'} />
+          <ChatListHeader
+            onClose={onClose}
+            onMinimize={onMinimize}
+            onSettings={onSettings}
+            title={'Your Chats'}
+            />
         </div>
         <div className='tc-chatlist__container tc-full-width'>
           {chats.map((chat, i) => (
@@ -45,7 +65,7 @@ export default class ChatList extends Component {
               key={i}
               {...chat}
               onClick={(e) => this.onClick(chat, e)}
-              onClose={this.onClose}
+              onClose={this.onCloseChatListItem}
             />)
           )}
         </div>
