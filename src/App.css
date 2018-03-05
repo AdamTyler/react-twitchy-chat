@@ -22,6 +22,7 @@
 
 .App-title {
   font-size: 1.5em;
+  margin: 10px;
 }
 
 .App-container {
@@ -39,4 +40,11 @@
   left: 0;
   bottom: 0;
   right: 5rem;
+}
+
+.gh-btns {
+  justify-content: center;
+}
+.gh-btns > iframe {
+  margin: 3px;
 }

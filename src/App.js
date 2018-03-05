@@ -110,15 +110,20 @@ class App extends Component {
           />
         )
       }
+      return null
     })
   }
 
   render () {
     return (
-      <div className="App tc">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">react-twitchy-chat</h1>
+      <div className='App tc'>
+        <header className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <h1 className='App-title'>react-twitchy-chat</h1>
+          <div className='gh-btns tc-flex'>
+          <a className='github-button' href='https://github.com/AdamTyler' ariaLabel='Follow @AdamTyler on GitHub'>Follow @AdamTyler</a>
+          <a className='github-button' href='https://github.com/AdamTyler/react-twitchy-chat' dataIcon='octicon-star' ariaLabel='Star AdamTyler/react-twitchy-chat on GitHub'>Star</a>
+          </div>
         </header>
         <div className='App-container'>
           <div className='App-windows'>
