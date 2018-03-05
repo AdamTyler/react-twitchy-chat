@@ -22,6 +22,7 @@ export default class ChatWindow extends Component {
 
   static defaultProps = {
     id: 1,
+    maxMessages: 100,
     messages: [],
     onClose: null,
     onSettings: null,
@@ -51,7 +52,7 @@ export default class ChatWindow extends Component {
   }
 
   render() {
-    const { messages, onSubmit, showClose, showSettings, title } = this.props
+    const { maxMessages, messages, onSubmit, showClose, showSettings, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
@@ -65,7 +66,7 @@ export default class ChatWindow extends Component {
         </div>
         <div className='tc-chat-messages tc-full-width'>
           <MessageList
-            maxMessages={100}
+            maxMessages={maxMessages}
             messages={messages}
           />
         </div>

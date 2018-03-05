@@ -9,14 +9,20 @@ class App extends Component {
 
   state = {
     chats: [
-      {id: 1, avatar: 'http://via.placeholder.com/70x70', title: 'Arya Stark',
+      {
+        id: 1,
+        avatar: 'https://pm1.narvii.com/6046/a8c81433f8321b231b72558f13500e0d0d2dd8f4_128.jpg',
+        title: 'Arya Stark',
         subtitle: 'something here', lastUpdate: Date.now(), unread: 3,
         messages: [
           { text: 'Winter is coming!', sender: 'Arya Stark', time: '123'},
           { text: 'dont care', sender: 'Cersei', time: '123345'}
         ]
       },
-      {id: 2, avatar: 'http://via.placeholder.com/70x70', title: 'Inigo Montoya',
+      {
+        id: 2,
+        avatar: 'https://www.e-cigarette-forum.com/data/avatars/m/140/140602.jpg?1429716297',
+        title: 'Inigo Montoya',
         subtitle: 'something here', lastUpdate: Date.now() - 300000, unread: 0,
         messages: [
           { text: 'hi', sender: 'lazy9669', time: '123'},
@@ -24,17 +30,19 @@ class App extends Component {
         ]
       }
     ],
-    chatsOpen: []
+    chatIdsOpen: []
   }
 
   onChatListClick = (chat, e) => {
     console.log('chatListClick', chat, e)
-    this.setState({ chatsOpen: [...new Set([chat, ...this.state.chatsOpen])] })
+    // this.setState({ chatsOpen: [...new Set([chat, ...this.state.chatsOpen])] })
+    this.setState({ chatIdsOpen: [...new Set([chat.id, ...this.state.chatIdsOpen])] })
   }
 
   onClose = (chat, e) => {
     console.log('close', chat, e)
-    this.setState({ chatsOpen: this.state.chatsOpen.filter(item => item.id !== chat.id) })
+    // this.setState({ chatsOpen: this.state.chatsOpen.filter(item => item.id !== chat.id) })
+    this.setState({ chatIdsOpen: this.state.chatIdsOpen.filter(id => id !== chat.id) })
   }
 
   onSettings = (id, e) => {
@@ -61,28 +69,35 @@ class App extends Component {
     console.log('settings chat list', e)
   }
 
-  sendChat = (id, msg, opts={}) => {
-    console.log('sendChat', id, msg, opts)
-    let newMsg = {text: msg, sender: 'lazy9669', time: '234'}
-    this.setState({messages: [...this.state.messages, newMsg]})
+  sendChat = (chat, msg, opts={}) => {
+    console.log('sendChat', chat, msg, opts)
+    const newMsg = {text: msg, sender: 'lazy9669', time: Date.now()}
+    let newChats = this.state.chats.map(item => {
+      if (item.id === chat.id) {
+        item.messages = [...item.messages, newMsg]
+      }
+      return item
+    })
+    this.setState({ chats: newChats })
   }
 
   getChats = () => {
-    return this.state.chatsOpen.map((selected, i) => {
-      // let selected = this.state.chats.find(chat => { console.log('compare chat', chat, id, chat.id === id); return chat.id === id})
-      // console.log('selected chat', id, selected)
-      return (
+    return this.state.chats.map((selected, i) => {
+      if (this.state.chatIdsOpen.indexOf(selected.id) !== -1) {
+        return (
           <ChatWindow
-          id={selected.id}
-          key={i}
-          messages={selected.messages}
-          onClose={this.onClose}
-          onSubmit={this.sendChat}
-          showSettings={false}
-          onTitleClick={this.onTitleClick}
-          title={selected.title}
-        />
-    )
+            id={selected.id}
+            key={i}
+            maxMessages={20}
+            messages={selected.messages}
+            onClose={this.onClose}
+            onSubmit={this.sendChat}
+            showSettings={false}
+            onTitleClick={this.onTitleClick}
+            title={selected.title}
+          />
+        )
+      }
     })
   }
 
