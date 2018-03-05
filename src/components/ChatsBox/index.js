@@ -35,9 +35,11 @@ export default class ChatsBox extends Component {
               {icon}
             </span>
           </div>
-          <div className='tc-dialogs-box__unreads'>
-            {unread}
-          </div>
+          {unread !== 0 &&
+            <div className='tc-dialogs-box__unreads'>
+              {unread}
+            </div>
+          }
         </div>
       </div>
     )

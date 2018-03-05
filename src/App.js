@@ -19,7 +19,7 @@ class App extends Component {
         unread: 3,
         messages: [
           { text: 'Winter is coming!', sender: 'Arya Stark', time: '123'},
-          { text: 'dont care', sender: 'Cersei', time: '123345'}
+          { text: 'idgaf', sender: 'Cersei', time: '123345'}
         ]
       },
       {
@@ -30,8 +30,7 @@ class App extends Component {
         lastUpdate: Date.now() - 300000,
         unread: 0,
         messages: [
-          { text: 'hi', sender: 'lazy9669', time: '123'},
-          { text: 'hello', sender: 'thedude', time: '123345'}
+          { text: 'Hello my name is Inigo Montoya', sender: 'Inigo Montoya', time: '123'}
         ]
       }
     ],
