@@ -9,7 +9,9 @@ import './styles.css'
 export default class ChatWindow extends Component {
 
   static propTypes = {
+    avatar: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    maxMessages: PropTypes.number,
     messages: PropTypes.array,
     onClose: PropTypes.func,
     onSettings: PropTypes.func,
@@ -21,6 +23,7 @@ export default class ChatWindow extends Component {
   }
 
   static defaultProps = {
+    avatar: 'http://via.placeholder.com/70x70',
     id: 1,
     maxMessages: 100,
     messages: [],
@@ -52,14 +55,15 @@ export default class ChatWindow extends Component {
   }
 
   render() {
-    const { maxMessages, messages, onSubmit, showClose, showSettings, title } = this.props
+    const { avatar, maxMessages, messages, onSubmit, showClose, showSettings, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
           <ChatHeader
-            onClose={(e) => this.onClose(e)}
-            onSettings={(e) => this.onSettings(e)}
-            onTitleClick={(e) => this.onTitleClick(e)}
+            avatar={avatar}
+            onClose={this.onClose}
+            onSettings={this.onSettings}
+            onTitleClick={this.onTitleClick}
             showClose={showClose}
             showSettings={showSettings}
             title={title} />

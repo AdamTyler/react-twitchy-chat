@@ -63,3 +63,8 @@ body, div {
 .tc-btn-icon:focus {
   box-shadow: 0 0 6px 0 #5b9dbe;
 }
+
+.tc-input:focus {
+  border-color: #2c9fd7;
+  box-shadow: 0 0 6px -2px #2c9fd7;
+}

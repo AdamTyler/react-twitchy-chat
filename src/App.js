@@ -86,15 +86,13 @@ class App extends Component {
       if (this.state.chatIdsOpen.indexOf(selected.id) !== -1) {
         return (
           <ChatWindow
-            id={selected.id}
             key={i}
             maxMessages={20}
-            messages={selected.messages}
             onClose={this.onClose}
             onSubmit={this.sendChat}
             showSettings={false}
             onTitleClick={this.onTitleClick}
-            title={selected.title}
+            {...selected}
           />
         )
       }

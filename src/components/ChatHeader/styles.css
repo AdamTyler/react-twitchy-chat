@@ -10,8 +10,24 @@
   padding-bottom: .5rem;
 }
 
-.tc-title-text {
+.tc-title {
   flex-grow: 1;
+}
+
+.tc-title-avatar {
+  margin-right: .5rem;
+  overflow: hidden;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  background-color: inherit;
+}
+
+.tc-title-text {
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .tc-title-btns {

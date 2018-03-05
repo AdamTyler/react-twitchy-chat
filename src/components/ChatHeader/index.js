@@ -21,11 +21,14 @@ export default class ChatHeader extends Component {
   }
 
   render () {
-    const { className, onClose, onSettings, onTitleClick, showClose, showSettings, title } = this.props
+    const { avatar, className, onClose, onSettings, onTitleClick, showClose, showSettings, title } = this.props
     return (
       <div className={classNames('tc-title-header tc-flex tc-full-width tc-align-center', className)}>
-        <div className='tc-flex tc-title-text' onClick={onTitleClick}>
-          <span>{title}</span>
+        <div className='tc-flex tc-title tc-align-center' onClick={onTitleClick}>
+          <div className='tc-title-avatar'>
+            <img className='tc-image' src={avatar} alt='Users Avatar' />
+          </div>
+          <span className='tc-title-text'>{title}</span>
         </div>
         <div className='tc-flex tc-title-btns'>
           {showSettings &&
