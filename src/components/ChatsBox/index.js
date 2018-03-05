@@ -9,12 +9,14 @@ export default class ChatsBox extends Component {
 
   static propTypes = {
     className: PropTypes.string,
-    icon: PropTypes.object
+    icon: PropTypes.object,
+    unreads: PropTypes.number
   }
 
   static defaultProps = {
     className: '',
-    icon: <MdInsertComment size={'1.6rem'} />
+    icon: <MdInsertComment size={'1.6rem'} />,
+    unread: 0
   }
 
   onClick = e => {
@@ -24,7 +26,7 @@ export default class ChatsBox extends Component {
   }
 
   render () {
-    const { className, icon } = this.props
+    const { className, icon, unread } = this.props
     return (
       <div className={classNames('tc-dialogs-box__container', className)} onClick={this.onClick}>
         <div className='tc-dialogs-box__open-close'>
@@ -32,6 +34,9 @@ export default class ChatsBox extends Component {
             <span className='tc-btn-icon'>
               {icon}
             </span>
+          </div>
+          <div className='tc-dialogs-box__unreads'>
+            {unread}
           </div>
         </div>
       </div>

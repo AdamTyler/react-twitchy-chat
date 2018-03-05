@@ -79,6 +79,10 @@ class App extends Component {
     console.log('settings chat list', e)
   }
 
+  getUnreads = () => {
+    return this.state.chats.reduce((acc, c) => { return acc + c.unread }, 0)
+  }
+
   sendChat = (chat, msg, opts={}) => {
     console.log('sendChat', chat, msg, opts)
     const newMsg = {text: msg, sender: 'lazy9669', time: Date.now()}
@@ -129,7 +133,10 @@ class App extends Component {
             onCloseChatListItem={this.onCloseChatListItem}
             onSettings={this.onChatListSettings}
           />
-          <ChatsBox onClick={this.openChatList} />
+          <ChatsBox
+            onClick={this.openChatList}
+            unread={this.getUnreads()}
+            />
         </div>
       </div>
     );
