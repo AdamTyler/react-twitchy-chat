@@ -9,21 +9,32 @@ class App extends Component {
 
   state = {
     chats: [
-      {id: 1, avatar: 'http://via.placeholder.com/70x70', title: 'Arya Stark', subtitle: 'something here', lastUpdate: Date.now(), unread: 3},
-      {id: 2, avatar: 'http://via.placeholder.com/70x70', title: 'Inigo Montoya', subtitle: 'something here', lastUpdate: Date.now() - 300000, unread: 0}
+      {id: 1, avatar: 'http://via.placeholder.com/70x70', title: 'Arya Stark',
+        subtitle: 'something here', lastUpdate: Date.now(), unread: 3,
+        messages: [
+          { text: 'Winter is coming!', sender: 'Arya Stark', time: '123'},
+          { text: 'dont care', sender: 'Cersei', time: '123345'}
+        ]
+      },
+      {id: 2, avatar: 'http://via.placeholder.com/70x70', title: 'Inigo Montoya',
+        subtitle: 'something here', lastUpdate: Date.now() - 300000, unread: 0,
+        messages: [
+          { text: 'hi', sender: 'lazy9669', time: '123'},
+          { text: 'hello', sender: 'thedude', time: '123345'}
+        ]
+      }
     ],
-    messages: [
-      { text: 'hi', sender: 'lazy9669', time: '123'},
-      { text: 'hello', sender: 'thedude', time: '123345'}
-    ]
+    chatsOpen: []
   }
 
   onChatListClick = (chat, e) => {
     console.log('chatListClick', chat, e)
+    this.setState({ chatsOpen: [...new Set([chat, ...this.state.chatsOpen])] })
   }
 
-  onClose = (id, e) => {
-    console.log('close', id, e)
+  onClose = (chat, e) => {
+    console.log('close', chat, e)
+    this.setState({ chatsOpen: this.state.chatsOpen.filter(item => item.id !== chat.id) })
   }
 
   onSettings = (id, e) => {
@@ -56,6 +67,25 @@ class App extends Component {
     this.setState({messages: [...this.state.messages, newMsg]})
   }
 
+  getChats = () => {
+    return this.state.chatsOpen.map((selected, i) => {
+      // let selected = this.state.chats.find(chat => { console.log('compare chat', chat, id, chat.id === id); return chat.id === id})
+      // console.log('selected chat', id, selected)
+      return (
+          <ChatWindow
+          id={selected.id}
+          key={i}
+          messages={selected.messages}
+          onClose={this.onClose}
+          onSubmit={this.sendChat}
+          showSettings={false}
+          onTitleClick={this.onTitleClick}
+          title={selected.title}
+        />
+    )
+    })
+  }
+
   render () {
     return (
       <div className="App tc">
@@ -65,24 +95,7 @@ class App extends Component {
         </header>
         <div className='App-container'>
           <div className='App-windows'>
-            <ChatWindow
-              id={'chat1'}
-              messages={this.state.messages}
-              onClose={this.onClose}
-              onSubmit={this.sendChat}
-              showSettings={false}
-              onTitleClick={this.onTitleClick}
-              title={'TestChat'}
-            />
-            <ChatWindow
-              id={'chatTwo'}
-              messages={this.state.messages}
-              onClose={this.onClose}
-              onSettings={this.onSettings}
-              onSubmit={this.sendChat}
-              onTitleClick={this.onTitleClick}
-              title={'Other Chat'}
-            />
+            {this.getChats()}
           </div>
           <ChatList
             chats={this.state.chats}

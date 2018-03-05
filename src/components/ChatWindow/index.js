@@ -32,33 +32,33 @@ export default class ChatWindow extends Component {
     title: 'Twitchy Chat',
   }
 
-  onClose = (id, e) => {
+  onClose = e => {
     if (this.props.onClose instanceof Function) {
-      this.props.onClose(id, e)
+      this.props.onClose(this.props, e)
     }
   }
 
-  onSettings = (id, e) => {
+  onSettings = e => {
     if (this.props.onSettings instanceof Function) {
-      this.props.onSettings(id, e)
+      this.props.onSettings(this.props, e)
     }
   }
 
-  onTitleClick = (id, e) => {
+  onTitleClick = e => {
     if (this.props.onTitleClick instanceof Function) {
-      this.props.onTitleClick(id, e)
+      this.props.onTitleClick(this.props, e)
     }
   }
 
   render() {
-    const { id, messages, onSubmit, showClose, showSettings, title } = this.props
+    const { messages, onSubmit, showClose, showSettings, title } = this.props
     return (
       <div className='tc-chat-window tc-flex tc-align-center'>
         <div className='tc-chat-title tc-flex tc-full-width tc-align-center'>
           <ChatHeader
-            onClose={(e) => this.onClose(id, e)}
-            onSettings={(e) => this.onSettings(id, e)}
-            onTitleClick={(e) => this.onTitleClick(id, e)}
+            onClose={(e) => this.onClose(e)}
+            onSettings={(e) => this.onSettings(e)}
+            onTitleClick={(e) => this.onTitleClick(e)}
             showClose={showClose}
             showSettings={showSettings}
             title={title} />
@@ -70,7 +70,7 @@ export default class ChatWindow extends Component {
           />
         </div>
         <div className='tc-chat-input tc-full-width'>
-          <ChatInput onSubmit={msg => onSubmit(id, msg)} />
+          <ChatInput onSubmit={msg => onSubmit(this.props, msg)} />
         </div>
       </div>
     )

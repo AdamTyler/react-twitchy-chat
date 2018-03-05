@@ -30,7 +30,7 @@ export default class ChatListItem extends Component {
   }
 
   render () {
-    const { avatar, className, lastUpdate, onClick, onClose, subtitle, title, unread } = this.props
+    const { avatar, className, lastUpdate, onClick, subtitle, title, unread } = this.props
     return (
       <div className={classNames('tc-chatlist-item__container tc-flex tc-full-width tc-align-center', className)}
         onClick={onClick}
